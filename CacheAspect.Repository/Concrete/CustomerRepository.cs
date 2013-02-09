@@ -3,7 +3,7 @@ using CacheAspect.DomainModel;
 
 namespace CacheAspect.Repository
 {
-    public class CustomerRepository : GenericRepository<Customer> ,ICustomerRepository
+    public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
         public CustomerRepository(NorthwindContext context) 
             : base(context)
