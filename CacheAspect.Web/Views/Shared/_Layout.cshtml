@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/css")
+</head>
+    <body>
+        
+        <h1>Cache Aspect</h1>
+
+        <hr/>
+
+        <p>
+            @Html.ActionLink("Home", "Index", "Home")
+            |
+            @Html.ActionLink("View Products", "Index", "Product")
+            |
+            @Html.ActionLink("View Suppliers", "Index", "Supplier")
+            |
+            @Html.ActionLink("View (Sales) Customers", "Index", "Customer")
+        </p>
+        
+        <hr/>
+
+        @RenderBody()
+
+        @Scripts.Render("~/js")
+
+    </body>
+</html>

@@ -1,0 +1,54 @@
+﻿@model CacheAspect.Web.Models.ProductModel.DetailModel
+@{
+    ViewBag.Title = @Model.ProductName + " - Cache Aspect";
+}
+
+<h2>@Model.ProductName</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.HiddenFor(m => m.ProductId)
+    
+    <div class="control-group">
+        @Html.LabelFor(m => m.ProductId, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.ProductId, new { @class = "input-medium", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.ProductName, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "input-xlarge" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.SupplierId, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.SupplierId, new { @class = "input-medium", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.UnitPrice, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBox("UnitPrice", String.Format("{0:0.00}", Model.UnitPrice), new { id = "UnitPrice", @class = "input-medium" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.UnitsInStock, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.UnitsInStock, new { @class = "input-medium" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.UnitsOnOrder, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.UnitsOnOrder, new { @class = "input-medium" })
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Edit Product Details</button>
+            <a href="@Url.Action("Index", "Product")" class="btn">Cancel</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CacheAspect.Web.Models.ProductModel.IndexModel>
+@{
+    ViewBag.Title = "Products - Cache Aspect";
+}
+
+<h2>Products</h2>
+
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.UnitPriceWithCurrencySymbol</td>
+                <td>@Html.ActionLink("View Details", "Detail", new { id = item.Id })</td>
+            </tr>
+        }  
+
+    </tbody>  
+</table>

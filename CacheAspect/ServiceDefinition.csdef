@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="WindowsAzure1" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2012-10.1.8">
+    <WebRole name="CacheAspect.Web" vmsize="Small">
+        <Sites>
+            <Site name="Web">
+                <Bindings>
+                    <Binding name="Endpoint1" endpointName="Endpoint1" />
+                </Bindings>
+            </Site>
+        </Sites>
+        <Endpoints>
+            <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+        </Endpoints>
+        <Imports>
+            <Import moduleName="Diagnostics" />
+        </Imports>
+        <Startup priority="-2">
+            <Task commandLine="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe install" executionContext="elevated" taskType="simple" />
+        </Startup>
+        <ConfigurationSettings>
+            <Setting name="Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel" />
+        </ConfigurationSettings>
+    </WebRole>
+    <WorkerRole name="CacheAspect.CacheWorker" vmsize="Small">
+        <Imports>
+            <Import moduleName="Diagnostics" />
+            <Import moduleName="Caching" />
+        </Imports>
+        <LocalResources>
+            <LocalStorage name="DiagnosticStore" sizeInMB="20000" cleanOnRoleRecycle="false" />
+        </LocalResources>
+    </WorkerRole>
+</ServiceDefinition>

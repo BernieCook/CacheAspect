@@ -1,0 +1,42 @@
+﻿@model CacheAspect.Web.Models.SupplierModel.DetailModel
+@{
+    ViewBag.Title = @Model.CompanyName + " - Cache Aspect";
+}
+
+<h2>@Model.CompanyName</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.HiddenFor(m => m.SupplierId)
+    
+    <div class="control-group">
+        @Html.LabelFor(m => m.SupplierId, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.SupplierId, new { @class = "input-medium", disabled = "disabled" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.CompanyName, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.CompanyName, new { @class = "input-xlarge" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.ContactName, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.ContactName, new { @class = "input-large" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.LabelFor(m => m.ContactTitle, new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(m => m.ContactTitle, new { @class = "input-large" })
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Edit Supplier Details</button>
+            <a href="@Url.Action("Index", "Supplier")" class="btn">Cancel</a>
+        </div>
+    </div>
+}
